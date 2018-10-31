@@ -24,4 +24,4 @@ hs_err_pid*
 
 # module files #
 *.kotlin_module
-*/out/*
+out/*
