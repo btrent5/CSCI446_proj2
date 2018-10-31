@@ -1,7 +1,7 @@
 import java.io.File
 
 fun importMaze(fileName: String): MutableList<MutableList<Node>> {
-
+    val startTime = System.currentTimeMillis()
     val input = File(fileName).readLines()
     var maze: MutableList<MutableList<Node>> = mutableListOf()
 
@@ -33,5 +33,6 @@ fun importMaze(fileName: String): MutableList<MutableList<Node>> {
             }
         }
     }
+    println("imported \"$fileName\": ${System.currentTimeMillis() - startTime}ms")
     return maze
 }

@@ -9,7 +9,6 @@ fun main(args: Array<String>) {
     File(PUZZLE_PATH).walk().forEach { file ->
         //        only try to import text files
         if (file.path.endsWith(".txt")) {
-            println("importing maze from: ${file.path}")
             renderMaze(importMaze(file.path),
                     "$OUTPUT_PATH${file.name.removeSuffix("maze.txt")}_input.png")
         }

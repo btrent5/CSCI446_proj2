@@ -6,6 +6,7 @@ fun renderMaze(maze: MutableList<MutableList<Node>>, outputFilename: String = "r
     if (maze.size == 0) {
         error("Passed an empty maze")
     }
+    val startTime = System.currentTimeMillis()
 //    assuming rectangular with top row widest
     var image = BufferedImage(maze.size, maze[0].size, BufferedImage.TYPE_INT_RGB)
     for (i in 0 until maze.size) {
@@ -31,4 +32,5 @@ fun renderMaze(maze: MutableList<MutableList<Node>>, outputFilename: String = "r
     }
     var out = File(outputFilename)
     ImageIO.write(image, "png", out)
+    println("render finished: ${System.currentTimeMillis() - startTime}ms")
 }
