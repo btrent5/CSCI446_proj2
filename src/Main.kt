@@ -1,5 +1,6 @@
 import java.io.File
 
+//PUZZLE_PATH can be either a file or a directory
 const val PUZZLE_PATH = "res/puzzles/"
 const val OUTPUT_PATH = "res/output/"
 

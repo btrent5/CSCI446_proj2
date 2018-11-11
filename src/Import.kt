@@ -13,24 +13,33 @@ fun importMaze(fileName: String): MutableList<MutableList<Node>> {
         }
     }
 
-    for (row: MutableList<Node> in maze) {
-        for (node: Node in row) {
+    for (i in 0 until maze.size) {
+        for (j in 0 until maze[i].size) {
 //            if a node is on the border that neighbor is set to to type '?'
-            if (node.x == 0 || node.x == row.lastIndex || node.y == 0 || node.y == row.lastIndex) {
-                node.assignNeighbors(
-                        Node(),
-                        Node(),
-                        Node(),
-                        Node()
-                )
+            if (j == 0) {
+                maze[i][j].west = Node()
             } else {
-                node.assignNeighbors(
-                        maze[node.x][node.y + 1],
-                        maze[node.x + 1][node.y],
-                        maze[node.x][node.y - 1],
-                        maze[node.x - 1][node.y]
-                )
+                maze[i][j].west = maze[i][j - 1]
             }
+
+            if (j == maze[i].lastIndex) {
+                maze[i][j].east = Node()
+            } else {
+                maze[i][j].east = maze[i][j + 1]
+            }
+
+            if (i == maze.lastIndex) {
+                maze[i][j].south = Node()
+            } else {
+                maze[i][j].south = maze[i + 1][j]
+            }
+
+            if (i == 0) {
+                maze[i][j].north = Node()
+            } else {
+                maze[i][j].north = maze[i - 1][j]
+            }
+            maze[i][j].calculateConstrain()
         }
     }
     println("imported \"$fileName\": ${System.currentTimeMillis() - startTime}ms")
