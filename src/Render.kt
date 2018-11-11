@@ -32,5 +32,5 @@ fun renderMaze(maze: MutableList<MutableList<Node>>, outputFilename: String = "r
     }
     var out = File(outputFilename)
     ImageIO.write(image, "png", out)
-    println("render finished: ${System.currentTimeMillis() - startTime}ms")
+    println("render finished: ${System.currentTimeMillis() - startTime}ms\n")
 }
