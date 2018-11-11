@@ -1,3 +1,3 @@
 interface BacktrackAlg {
-    fun search(domain: MutableList<MutableList<Node>>)
+    fun search(domain: MutableList<MutableList<Node>>) : Boolean
 }
