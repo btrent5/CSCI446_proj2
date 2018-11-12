@@ -20,6 +20,7 @@ class Node(val x: Int = -1, val y: Int = -1, character: Char = '?') {
 //    constrainValue is 0-4 representing how many of north, east, south, west are blocked
 //    use (4 - constrainValue) for how many of north, east, south, west are open
     fun calculateConstrain() {
+        if (this.type == '?') return
         this.constrainValue = 0
         this.neighbors.forEach { node: Node -> if (node.type != '_') this.constrainValue++ }
     }

@@ -52,7 +52,7 @@ class Maze(fileName : String){
                 }
             }
         }
-        println("imported \"$fileName\": ${System.currentTimeMillis() - startTime}ms")
+        println("\nimported \"$fileName\": ${System.currentTimeMillis() - startTime}ms")
         return maze
     }
 

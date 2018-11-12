@@ -17,13 +17,15 @@ interface BacktrackAlg {
 
         // if assignment is complete then return
         if (isComplete(maze)) {
-            print("Assignment complete")
+//            print("Assignment complete")
             return true
         }
         var node = selectUnassignedVariable(maze)
         // for each value in OrderDomainValue(var, assignment, csp)
         for (value in node.domain) {
             node.type = value
+//            node.neighbors.map { node -> node.calculateConstrain() }
+//            node.calculateConstrain()
 
 //            consistent is true if there are no constraint violations among neighbors
             val consistent = node.neighbors.filter { neighbor -> neighbor.type != '?' }
