@@ -11,8 +11,13 @@ class BasicBacktrack : BacktrackAlg {
         // for each value in OrderDomainValue(var, assignment, csp)
         for (value in OrderDomainValue(node)) {
             node.type = value
+
+            //renderMaze(maze, "res/output/temp.png")
             // if value is consistent with assignment then
-            if(node.validateConstraints()) {
+            val consistent =  node.neighbors.filter { neighbor -> neighbor.type != '?' }.all { neighbor -> neighbor.validateConstraints() }
+            //val consistent =  maze.all { row -> row.all { node -> node.validateConstraints() } }
+
+            if(consistent) {
                 // add {var = value} to assignment
                 // inferences = Inference(csp, var, value)
                 // if inferences != failure then

@@ -28,7 +28,7 @@ class Node(val x: Int = -1, val y: Int = -1, character: Char = '?') {
     {
         if (this.type == '_')
         {
-            return false
+            return true
         }
         val unassigned = this.neighbors.count { node -> node.type == '_' }
         val matchingAssigned = this.neighbors.count{node -> node.type == this.type}
@@ -36,7 +36,7 @@ class Node(val x: Int = -1, val y: Int = -1, character: Char = '?') {
         {
             return false
         }
-        if(this.source && (matchingAssigned + unassigned) < 1 ||  (matchingAssigned + unassigned) < 2)
+        if(this.source && (matchingAssigned + unassigned) < 1 || !this.source && (matchingAssigned + unassigned) < 2)
         {
             return false
         }

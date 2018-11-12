@@ -1,7 +1,7 @@
 import java.io.File
 class Maze(fileName : String){
 
-    val domain : MutableList<Char> = mutableListOf()
+    val domain : MutableSet<Char> = mutableSetOf()
     val nodes = importMaze(fileName)
 
     fun importMaze(fileName: String): MutableList<MutableList<Node>> {
@@ -48,7 +48,7 @@ class Maze(fileName : String){
                 }
                 maze[i][j].calculateConstrain()
                 if(maze[i][j].type == '_') {
-                    maze[i][j].domain = domain
+                    maze[i][j].domain = domain.toMutableList()
                 }
             }
         }
