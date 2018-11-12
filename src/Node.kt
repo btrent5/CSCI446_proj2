@@ -6,6 +6,8 @@ class Node(val x: Int = -1, val y: Int = -1, character: Char = '?') {
     val neighbors get() = mutableListOf(north, east, south, west)
     var type = character
     var constrainValue = -1
+    var domain = mutableListOf(type)
+    val source = type != '_' && type != '?'
 
     @Deprecated(message = "Functionality moved into Import.kt")
     fun assignNeighbors(northNode: Node, eastNode: Node, southNode: Node, westNode: Node) {
@@ -20,6 +22,25 @@ class Node(val x: Int = -1, val y: Int = -1, character: Char = '?') {
     fun calculateConstrain() {
         this.constrainValue = 0
         this.neighbors.forEach { node: Node -> if (node.type != '_') this.constrainValue++ }
+    }
+
+    fun validateConstraints() : Boolean
+    {
+        if (this.type == '_')
+        {
+            return false
+        }
+        val unassigned = this.neighbors.count { node -> node.type == '_' }
+        val matchingAssigned = this.neighbors.count{node -> node.type == this.type}
+        if(this.source && matchingAssigned > 1 || matchingAssigned > 2)
+        {
+            return false
+        }
+        if(this.source && (matchingAssigned + unassigned) < 1 ||  (matchingAssigned + unassigned) < 2)
+        {
+            return false
+        }
+        return true
     }
 
 }

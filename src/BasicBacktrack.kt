@@ -1,23 +1,31 @@
 class BasicBacktrack : BacktrackAlg {
-    // esp =
 
     override fun search(maze: MutableList<MutableList<Node>>) : Boolean
     {
         // if assignment is complete then return
         if(isComplete(maze)){
+            print("Assignment complete")
             return true
         }
         var node = SelectUnassignedVariable(maze)
-        // for each value in OrderDomainValue(var, assignment, esp)
+        // for each value in OrderDomainValue(var, assignment, csp)
+        for (value in OrderDomainValue(node)) {
+            node.type = value
             // if value is consistent with assignment then
+            if(node.validateConstraints()) {
                 // add {var = value} to assignment
-                // inferences = Inference(esp, var, value)
+                // inferences = Inference(csp, var, value)
                 // if inferences != failure then
-                    // add inferences to assignment
-                    // result = search(assignment, esp)
-                    // if result != failure then
-                        // return result
-            // remove { var = value} and inferences from assignment
+                // add inferences to assignment
+                var result = search(maze)
+                // if result != failure then
+                if(result) {
+                    return true
+                }
+                // remove { var = value} and inferences from assignment
+            }
+            node.type = '_'
+        }
         // return failure
         return false
     }
@@ -31,7 +39,7 @@ class BasicBacktrack : BacktrackAlg {
      */
     fun isComplete(maze : MutableList<MutableList<Node>>) : Boolean
     {
-        return false
+        return maze.all { row -> row.all { node -> node.type != '_' } }
     }
 
     /*
@@ -39,7 +47,18 @@ class BasicBacktrack : BacktrackAlg {
      */
     fun SelectUnassignedVariable(maze : MutableList<MutableList<Node>>) : Node
     {
-        return maze[0][0];
+        var temp = mutableListOf<MutableList<Node>>()
+        temp.addAll(maze)
+        temp = temp.map { row -> row.filter { node -> node.type == '_' }.toMutableList() }.filter { row -> !row.isEmpty() }.toMutableList()
+        return temp[0][0]
+    }
+
+    /*
+        Returns domain of node
+     */
+    fun OrderDomainValue(node : Node) : MutableList<Char>
+    {
+        return node.domain
     }
 }
 
