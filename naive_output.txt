@@ -1,0 +1,42 @@
+imported "res\puzzles\10x10maze.txt": 61ms
+render finished: 508ms
+solved in 1983ms
+... using 869549 assignments
+render finished: 11ms
+
+imported "res\puzzles\12x12maze.txt": 9ms
+render finished: 17ms
+solved in 4514ms
+... using 5836919 assignments
+render finished: 11ms
+
+imported "res\puzzles\5x5maze.txt": 1ms
+render finished: 8ms
+solved in 0ms
+... using 168 assignments
+render finished: 8ms
+
+imported "res\puzzles\5x5solutionmaze.txt": 1ms
+render finished: 7ms
+solved in 0ms
+... using 0 assignments
+render finished: 7ms
+
+imported "res\puzzles\7x7maze.txt": 1ms
+render finished: 7ms
+solved in 1ms
+... using 1631 assignments
+render finished: 8ms
+
+imported "res\puzzles\8x8maze.txt": 0ms
+render finished: 9ms
+solved in 4ms
+... using 6934 assignments
+render finished: 9ms
+
+imported "res\puzzles\9x9maze.txt": 1ms
+render finished: 9ms
+solved in 113ms
+... using 200021 assignments
+render finished: 10ms
+Solved res/puzzles/ in 7388ms
