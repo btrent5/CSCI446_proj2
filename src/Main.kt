@@ -6,6 +6,8 @@ const val PUZZLE_PATH = "res/puzzles/"
 const val OUTPUT_PATH = "res/output/"
 
 fun main(args: Array<String>) {
+
+    var backtrack = BasicBacktrack()
     val startTime = System.currentTimeMillis()
     File(PUZZLE_PATH).walk().forEach { file ->
         //        only try to import text files
@@ -16,9 +18,11 @@ fun main(args: Array<String>) {
                     "$OUTPUT_PATH${file.name.removeSuffix("maze.txt")}_input.png")
 //            find solution
             val time = measureTimeMillis {
-                BasicBacktrack().search(currentMaze)
+                backtrack.search(currentMaze)
             }
             println("solved in ${time}ms")
+
+            println("... using ${backtrack.assignments} assignments")
 //            render solution
             renderMaze(currentMaze,
                     "$OUTPUT_PATH${file.name.removeSuffix("maze.txt")}_output.png")

@@ -1,5 +1,6 @@
 interface BacktrackAlg {
 
+    var assignments : Int
     /*
     This function is implemented to select in different ways to vary algorithm behavior
     Could select by location, randomly or by constrainValue for example
@@ -23,6 +24,7 @@ interface BacktrackAlg {
         var node = selectUnassignedVariable(maze)
         // for each value in OrderDomainValue(var, assignment, csp)
         for (value in node.domain) {
+            assignments++
             node.type = value
 //            node.neighbors.map { node -> node.calculateConstrain() }
 //            node.calculateConstrain()

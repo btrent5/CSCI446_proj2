@@ -1,4 +1,5 @@
 class SmartBacktrack : BacktrackAlg {
+    override var assignments: Int = 0
 
     /*
     Selects based on constrainValue
