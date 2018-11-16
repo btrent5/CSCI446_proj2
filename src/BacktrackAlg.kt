@@ -1,7 +1,9 @@
 interface BacktrackAlg {
 
+    // Tracks number of assignments made
     var assignments : Int
 
+    // Tracks if algorithm is smart for conditionally executing code
     val smart : Boolean
 
     /*
@@ -17,15 +19,18 @@ interface BacktrackAlg {
         return maze.all { row -> row.all { node -> node.type != '_' } }
     }
 
+    /*
+        Search the puzzle for a solution
+        Returns true if solved, false otherwise
+     */
     fun search(maze: MutableList<MutableList<Node>>): Boolean {
 
         // if assignment is complete then return
         if (isComplete(maze)) {
-//            print("Assignment complete")
             return true
         }
         var node = selectUnassignedVariable(maze)
-        // for each value in OrderDomainValue(var, assignment, csp)
+
         for (value in node.domain) {
             assignments++
             node.type = value
@@ -33,7 +38,6 @@ interface BacktrackAlg {
             if(smart){
                 node.neighbors.forEach { node -> node.calculateConstrain() }
             }
-//            node.calculateConstrain()
 
 //            consistent is true if there are no constraint violations among neighbors
             val consistent = node.neighbors.filter { neighbor -> neighbor.type != '?' }

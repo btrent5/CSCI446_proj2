@@ -4,6 +4,9 @@ class Maze(fileName : String){
     val domain : MutableSet<Char> = mutableSetOf()
     val nodes = importMaze(fileName)
 
+    /*
+        Pass filename of puzzle. Returns parsed puzzle.
+     */
     fun importMaze(fileName: String): MutableList<MutableList<Node>> {
         val startTime = System.currentTimeMillis()
         val input = File(fileName).readLines()
