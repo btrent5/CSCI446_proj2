@@ -2,6 +2,8 @@ class BasicBacktrack : BacktrackAlg {
 
     override var assignments: Int = 0
 
+    override val smart = false
+
     /*
     Selects based on location in the puzzle
     most northwesterly unassigned node will be selected first

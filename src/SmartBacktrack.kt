@@ -1,6 +1,8 @@
 class SmartBacktrack : BacktrackAlg {
     override var assignments: Int = 0
 
+    override val smart = true
+
     /*
     Selects based on constrainValue
     node with the highest constrainValue will be selected first

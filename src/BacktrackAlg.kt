@@ -1,6 +1,9 @@
 interface BacktrackAlg {
 
     var assignments : Int
+
+    val smart : Boolean
+
     /*
     This function is implemented to select in different ways to vary algorithm behavior
     Could select by location, randomly or by constrainValue for example
@@ -26,7 +29,10 @@ interface BacktrackAlg {
         for (value in node.domain) {
             assignments++
             node.type = value
-//            node.neighbors.map { node -> node.calculateConstrain() }
+
+            if(smart){
+                node.neighbors.forEach { node -> node.calculateConstrain() }
+            }
 //            node.calculateConstrain()
 
 //            consistent is true if there are no constraint violations among neighbors
